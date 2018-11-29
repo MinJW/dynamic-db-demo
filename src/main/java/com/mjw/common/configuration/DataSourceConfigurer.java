@@ -1,6 +1,5 @@
-package com.mjw.configuration;
+package com.mjw.common.configuration;
 
-import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceBuilder;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.slf4j.Logger;
@@ -27,28 +26,34 @@ public class DataSourceConfigurer {
 
     private Logger logger = LoggerFactory.getLogger(DataSourceConfigurer.class);
 
-    @Bean(name = "db")
+    @Bean(name = "user")
     @Primary
-    @ConfigurationProperties(prefix = "com.mjw.datasource.db")
-    public DataSource dbDataSource(){
-        logger.debug("dbDataSource init ...");
+    @ConfigurationProperties(prefix = "com.mjw.datasource.user")
+    public DataSource userDataSource(){
+        logger.debug("userDataSource init ...");
         return DruidDataSourceBuilder.create().build();
     }
 
-    @Bean(name = "db1")
-    @ConfigurationProperties(prefix = "com.mjw.datasource.db1")
-    public DataSource db1DataSource(){
-        logger.debug("db1DataSource init ...");
+    @Bean(name = "wallet")
+    @ConfigurationProperties(prefix = "com.mjw.datasource.wallet")
+    public DataSource walletDataSource(){
+        logger.debug("walletDataSource init ...");
         return DruidDataSourceBuilder.create().build();
     }
 
-    @Bean(name = "db2")
-    @ConfigurationProperties(prefix = "com.mjw.datasource.db2")
-    public DataSource db2DataSource(){
-        logger.debug("db2DataSource init ...");
+    @Bean(name = "device")
+    @ConfigurationProperties(prefix = "com.mjw.datasource.device")
+    public DataSource deviceDataSource(){
+        logger.debug("deviceDataSource init ...");
         return DruidDataSourceBuilder.create().build();
     }
 
+    @Bean(name = "order")
+    @ConfigurationProperties(prefix = "com.mjw.datasource.order")
+    public DataSource orderDataSource(){
+        logger.debug("orderDataSource init ...");
+        return DruidDataSourceBuilder.create().build();
+    }
 
 
     /**
@@ -64,12 +69,17 @@ public class DataSourceConfigurer {
     public DataSource dynamicDataSource(){
         MyDynamicDataSource myDynamicDataSource = new MyDynamicDataSource();
 
-        Map<Object,Object> dataSourceMap = new HashMap<>();
-        dataSourceMap.put("db",dbDataSource());
-        dataSourceMap.put("db1",db1DataSource());
-        dataSourceMap.put("db2",db2DataSource());
 
-        myDynamicDataSource.setDefaultTargetDataSource(dbDataSource());
+        Map<Object,Object> dataSourceMap = new HashMap<>();
+        dataSourceMap.put("user",userDataSource());
+        dataSourceMap.put("wallet",walletDataSource());
+        dataSourceMap.put("device",deviceDataSource());
+        dataSourceMap.put("order",orderDataSource());
+
+        //设置默认的dataSource
+        myDynamicDataSource.setDefaultTargetDataSource(userDataSource());
+
+        //设置数据源map
         myDynamicDataSource.setTargetDataSources(dataSourceMap);
 
         return myDynamicDataSource;

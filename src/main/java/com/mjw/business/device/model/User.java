@@ -1,4 +1,4 @@
-package com.mjw.model;
+package com.mjw.business.device.model;
 
 /**
  * @Description

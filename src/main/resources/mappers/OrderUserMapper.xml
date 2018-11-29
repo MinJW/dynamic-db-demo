@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.mjw.business.user.dao.UserDao">
+<mapper namespace="com.mjw.business.order.dao.OrderUserDao">
 
-    <select id="userList" resultType="com.mjw.business.user.model.User">
+    <select id="userList" resultType="com.mjw.business.order.model.User">
         SELECT *
         FROM user
     </select>
 
-    <select id="findUserById" parameterType="int" resultType="com.mjw.business.user.model.User">
+    <select id="findUserById" parameterType="int" resultType="com.mjw.business.order.model.User">
         select * from user where id = #{id}
     </select>
 
