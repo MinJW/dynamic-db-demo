@@ -1,7 +1,7 @@
 package com.mjw;
 
-import com.mjw.mapper.UserDao;
-import com.mjw.model.User;
+import com.mjw.business.user.dao.UserDao;
+import com.mjw.business.user.model.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mybatis.spring.annotation.MapperScan;
@@ -11,7 +11,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@MapperScan("com.mjw.mapper")
+@MapperScan("com.mjw.business.*.dao")
 public class DynamicDbDemoApplicationTests {
 
     @Autowired

@@ -1,8 +1,7 @@
-package com.mjw.mapper;
+package com.mjw.business.user.dao;
 
-import com.mjw.model.User;
+import com.mjw.business.user.model.User;
 
-import java.util.List;
 
 /**
  * @Description
@@ -11,8 +10,6 @@ import java.util.List;
  * @Version 1.0.0
  **/
 public interface UserDao {
-
-    List<User> userList();
 
     User findUserById(int id);
 }

@@ -1,4 +1,4 @@
-package com.mjw.configuration;
+package com.mjw.common.configuration;
 
 import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
 
@@ -12,7 +12,7 @@ public class MyDynamicDataSource extends AbstractRoutingDataSource {
 
     @Override
     protected Object determineCurrentLookupKey() {
-        return "db2";
+        return DbLookupKeyContextHolder.getDataSourceKey();
     }
 
 }

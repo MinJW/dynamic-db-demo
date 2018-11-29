@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script src="../js/jquery-1.7.1.min.js"></script>
+</body>
+<script type="text/javascript">
+	var log = console.log.bind(console)
+	var fields = ['device','order','user','wallet']
+
+	var intv = setInterval("func()","1");
+	var func = function(){
+	    for(var i = 0; i < 100; i++){
+            parseQuest(fields[i % 4])
+		}
+	}
+
+	$(function(){
+		$(document).keydown(function(event){
+	　　　　if(event.keyCode == 32){
+				clearInterval(intv)
+	　　　　}
+	　　});
+	})
+
+	var parseQuest = function(field){
+		$.ajax({
+            url:'http://localhost:8888/'+field,
+            data:{'id':1},
+			type:"post",
+			dataType:"json",
+			success:function(data){
+                if(field == data.name){
+                    //log('success==>' + data.name)
+				}else{
+                    log('******************************'+data.name)
+				}
+			},
+			fail:function(data){
+				log('**********************'+'error'+data)
+			}
+		})
+	}
+	
+</script>
+</html>
