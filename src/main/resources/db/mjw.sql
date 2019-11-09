@@ -1,3 +1,7 @@
+-- ----------------------------
+MYSQL
+-- ----------------------------
+
 DROP DATABASE IF EXISTS mjw_device;
 CREATE DATABASE mjw_device;
 CREATE TABLE mjw_device.`user` (

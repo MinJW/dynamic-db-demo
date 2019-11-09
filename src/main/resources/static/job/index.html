@@ -14,8 +14,9 @@
 
 	var intv = setInterval("func()","1");
 	var func = function(){
-	    for(var i = 0; i < 100; i++){
+	    for(var i = 0; i < 1000; i++){
             parseQuest(fields[i % 4])
+			//log(fields[i % 4])
 		}
 	}
 
@@ -37,11 +38,11 @@
                 if(field == data.name){
                     //log('success==>' + data.name)
 				}else{
-                    log('******************************'+data.name)
+                    log(field+'=>success**********'+data.name)
 				}
 			},
 			fail:function(data){
-				log('**********************'+'error'+data)
+				log(field+'=>error***************'+data)
 			}
 		})
 	}
