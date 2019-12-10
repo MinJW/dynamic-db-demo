@@ -11,4 +11,7 @@
         select * from user where id = #{id}
     </select>
 
+    <update id="update" parameterType="com.mjw.business.user.model.User">
+        update user set name = #{name} where id = #{id}
+    </update>
 </mapper>

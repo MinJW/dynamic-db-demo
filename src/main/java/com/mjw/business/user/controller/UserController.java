@@ -1,5 +1,6 @@
 package com.mjw.business.user.controller;
 
+import com.mjw.business.user.facade.UserFacade;
 import com.mjw.business.user.model.User;
 import com.mjw.business.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,9 +20,17 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private UserFacade userFacade;
+
     @RequestMapping("")
     public User findUserById(int id){
         return userService.findUserById(id);
     }
 
+    @RequestMapping("test")
+    public String test(){
+        userFacade.test();
+        return "OK";
+    }
 }

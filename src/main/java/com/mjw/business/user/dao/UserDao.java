@@ -12,4 +12,6 @@ import com.mjw.business.user.model.User;
 public interface UserDao {
 
     User findUserById(int id);
+
+    void update(User user);
 }

@@ -11,4 +11,5 @@ import com.mjw.business.device.model.User;
 public interface DeviceUserDao {
 
     User findUserById(int id);
+    void update(User user);
 }

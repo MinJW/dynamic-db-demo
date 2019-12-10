@@ -25,4 +25,8 @@ public class DeviceServiceImpl implements DeviceService {
         return deviceUserDao.findUserById(id);
     }
 
+    @Override
+    public void update(User user) {
+        deviceUserDao.update(user);
+    }
 }
